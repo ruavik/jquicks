@@ -17,5 +17,7 @@ project.ini
 /.idea
 /nbproject/
 /projects/test/
+/projects/waterline/
+/projects/designer/
 
 
