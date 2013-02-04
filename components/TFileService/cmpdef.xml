@@ -1,2 +1,6 @@
 <component>
+    <prp name='allowed_ext' type='object'>["jpg","png","gif"]</prp>
+    <prp name='max_size_MB' type='float'>1.1</prp>
+    <prp name='max_concurrent' type='integer'>5</prp>
+    <prp name='auth_required' type='boolean'>0</prp>
 </component>
