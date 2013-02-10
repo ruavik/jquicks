@@ -5,33 +5,38 @@
      <field name="origin" desc="Имя файла" type="CHAR" fetch="1" insert="1" update="1"/>
      <field name="filesize" desc="Размер файла" type="INTEGER" fetch="1" insert="1" />
      <field name="filetype" desc="Тип файла" type="CHAR" fetch="1" insert="1" update="1" />
+     <field name="extention" desc="Расширение" type="CHAR" fetch="1" insert="1" />
      <field name="size1" desc="Первая характеристика файла" type="INTEGER" fetch="1" />
      <field name="size2" desc="Вторая характеристика файла" type="INTEGER" fetch="1" />
      <field name="date" desc="Дата загрузки файла" type="CHAR" fetch="1" insert="0" update="1"/>
      <field name="ip" desc="IP-адрес, с которого был загружен файл" type="CHAR" fetch="1" insert="0" update="1" />
      <field name="title" desc="Заголовок файла (хинт)" type="CHAR" fetch="1" insert="1" update="1"/>
+     <field name="tags" desc="ключевые слова или метки, которые используются для категоризации, вида @tag" type="CHAR" fetch="1" insert="1" update="1"/>
      <field name="text" desc="Текст описания файла" type="CHAR" fetch="1" insert="1" update="1"/>
      <field name="owner" link="TAccountService.users" desc="Идентификатор владельца" type="INTEGER" fetch="1" insert="0" update="1" />
      <field name="rights" desc="Права доступа к файлу" type="CHAR" fetch="1" insert="1" update="1"/>
      <field name="data" desc="Данные файла в кодировке base-64" type="CHAR" insert="2"/>
+     <field name="path" desc="URL файла" type="CHAR" fetch="1"/>
 
      <param name="idx" desc="Уникальный индекс" type="INTEGER" required="0">-1</param>
      <param name="filters" desc="Условия фильтрации записей" type="CHAR" required="0" />
-     <param name="order" desc="Полядок сортировки" type="CHAR" required="0" >date ASC</param>
+     <param name="order" desc="Порядок сортировки" type="CHAR" required="0" >date ASC</param>
   </model>
   <table name="userfiles" type="InnoDB">
       <tfield name="idx" type="INT UNSIGNED NOT NULL" auto="1" desc=""/>
       <tfield name="origin" type="VARCHAR(255) NOT NULL" desc=""/>
       <tfield name="filesize" type="INT UNSIGNED" desc=""/>
       <tfield name="filetype" type="VARCHAR(255) NOT NULL" desc=""/>
+      <tfield name="extention" type="VARCHAR(15) NOT NULL" desc=""/>
       <tfield name="size1" type="INT UNSIGNED" desc=""/>
       <tfield name="size2" type="INT UNSIGNED" desc=""/>
       <tfield name="date" type="DATETIME NOT NULL" desc=""/>
       <tfield name="ip" type="CHAR(12) NOT NULL" desc=""/>
       <tfield name="title" type="VARCHAR(255) NOT NULL" desc=""/>
+      <tfield name="tags" type="TEXT NOT NULL" desc=""/>
       <tfield name="text" type="TEXT NOT NULL" desc=""/>
       <tfield name="owner" type="INT UNSIGNED" desc=""/>
       <tfield name="rights" type="SMALLINT(2) NOT NULL" desc=""/>
-      <tfield name="data" type="CHAR(12) NOT NULL" desc=""/>
+      <tfield name="path" type="VARCHAR(255) NOT NULL" desc=""/>
   </table>
 </service>
