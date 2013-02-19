@@ -68,7 +68,7 @@ class TFileService extends TDBService {
 
         if ($this->anonim_file_name === 1) {
             list($dir, $fname) = $this->_getFileName($this->last_id, $this->file_ext);
-            $path.= '/'.$dir;
+            $path.= '/' . $dir;
             if (!file_exists($path)) {
                 if (!mkdir($path, self::DEFAULT_DIR_MODE, true))
                     self::error(self::CREATE_DIRECTORY, $path);
@@ -90,9 +90,13 @@ class TFileService extends TDBService {
             self::_dbError();
     }
 
+    public function _update_userfiles_model($args) {
+        $this->_updateTableModel($args['values'], $args['index'], 'userfiles');
+    }
+
     public function _remove_userfiles_model($args) {
         $table = $this->name . '_userfiles';
-        $cmd = $this->_exec("SELECT path FROM `$table` WHERE idx=".$args['index']);
+        $cmd = $this->_exec("SELECT path FROM `$table` WHERE idx=" . $args['index']);
         $rows = $cmd->fetchAll(PDO::FETCH_ASSOC);
         array_map("unlink", glob($this->project->path . '/data/' . $this->name . '/' . $rows[0]['path']));
         $this->_removeTableModel($args['index'], 'userfiles');
