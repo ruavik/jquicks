@@ -10,7 +10,6 @@ jq.newClass('CFLoader','CVidget',{
         this.selected_files.len = 0;
         
         jq.registerEventHandler(this.view_model,"onfetch",[this,'redraw']);
-        jq.registerEventHandler(this.view_model,"onremove",[this,'redraw']);
     },
     onload:function (){
         jq.CFLoader.superclass.onload.call(this);
@@ -79,6 +78,7 @@ jq.newClass('CFLoader','CVidget',{
                         jq.get(this.view_model).remove(i,false);
                     }
                 }
+                jq.get(this.view_model).fetch();
             }
         }
     },
